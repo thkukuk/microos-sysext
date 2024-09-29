@@ -2,6 +2,12 @@
 
 This repository contains several scripts and documentation to create a store for systemd-sysext images to enhance openSUSE MicroOS.
 
+## Why systemd-sysext images?
+
+openSUSE MicroOS is an immutable system with a read-only root filesystem. Which means, it is not possible without reboot to install additional packages. But most of the time the tools required to debug issues are not installed.
+openSUSE MicroOS has the `toolbox` command for this, which starts a privileged container, in which the necessary tools can be installed without reboot.
+But what if the problem is with the container runtime or the network? In this case, the `toolbox` command does not work, too. The idea is to provide lightwight images containing the most important tools, which can easly added with [systemd-sysext](https://manpages.opensuse.org/systemd-sysext.8) to the system.
+
 ## Setup
 
 The setup to use sysext images consists of two parts:
@@ -74,3 +80,5 @@ The following directories needs to be created:
 * How to build in OBS?
   * The image should contain version and release number of the main package and a build number for the image
 
+TODO:
+* Allow to build a "debug" sysext image, which consist of several tools, which all are not called "debug".
