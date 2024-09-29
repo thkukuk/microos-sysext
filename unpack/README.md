@@ -9,6 +9,11 @@ Workflow:
   * Unpack the remaining RPMs
   * Create a squashfs image from it
 
+## How to use
+
+* Edit the list of packages in the script, for which a sysext image should be build
+* Run `microos-sysext.sh`, the images will be in the `store` directory
+
 ## Open Issues
 
 * Needs to run as root
