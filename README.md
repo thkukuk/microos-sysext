@@ -2,7 +2,40 @@
 
 This repository contains several scripts and documentation to create a store for systemd-sysext images to enhance openSUSE MicroOS.
 
-## Prerequires
+## Setup
+
+The setup to use sysext images consists of two parts:
+
+### Server
+A web server provides the sysext images in a directory. The format of the image name is `<name>-<version>[.arch].raw`, where \<name\> is the official name of the image as used in `extension-release` meta data.
+
+A SHA256SUMS file contains the sha256 checksums and the name of each image. This file is used by `systemd-sysupdate` to check for new image versions.
+
+The data can optional be signed with a gpg key.
+
+An example directory listing would look like:
+```
+gdb-14.2-2.1.x86-64.raw
+SHA256SUMS
+strace-6.11-1.1.x86-64.raw
+traceroute-2.1.5-1.3.x86-64.raw
+```
+
+### Client
+
+On the client, the image is stored in `/var/lib/sysext-store` and symlinked to `/etc/extensions`. The symlink must be the `<name>` plus the `.raw` suffix without version number.
+
+Example:
+```
+/var/lib/sysext-store/strace-6.11-1.1.x86-64.raw
+/etc/extensions/strace.raw -> ../../var/lib/sysext-store/strace-6.11-1.1.x86-64.raw
+```
+
+When the `systemd-sysext.service` is enabled it will automatically merge the images at bootup, else this this to be done manual with `systemd-sysext merge`.
+
+Installation and update of the images should happen with `systemd-sysupdate` according to the config files in `/etc/sysupdate.d`. This is not yet really working.
+
+## Client Prerequires
 
 ### Packages
 
@@ -16,13 +49,6 @@ The following packages needs to be installed:
 The following directories needs to be created:
 * /var/lib/sysext-store
 * /etc/extensions
-
-`/var/lib/sysext-store` contains the images, `/etc/extensions` contains a symlink to an image, if that should be enabled. The symlink must be the `name` plus the `.raw` suffix without version number.
-Example:
-```
-/var/lib/sysext-store/strace-6.11-1.1.x86-64.raw
-/etc/extensions/strace.raw -> ../..//var/lib/sysext-store/strace-6.11-1.1.x86-64.raw
-```
 
 ### Enable services
 * systemd-sysext.service
