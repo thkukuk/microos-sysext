@@ -4,7 +4,7 @@ This repository contains several scripts and documentation to create a store for
 
 ## Why systemd-sysext images?
 
-openSUSE MicroOS is an immutable system with a read-only root filesystem. Which means, it is not possible without reboot to install additional packages. But most of the time the tools required to debug issues are not installed.
+openSUSE MicroOS is an immutable system with a read-only root filesystem. Which means, it is not possible without reboot to install additional packages. But most of the time the tools required to debug issues are not installed when you need them.
 openSUSE MicroOS has the `toolbox` command for this, which starts a privileged container, in which the necessary tools can be installed without reboot.
 But what if the problem is with the container runtime or the network? In this case, the `toolbox` command does not work, too. The idea is to provide lightwight images containing the most important tools, which can easly added with [systemd-sysext](https://manpages.opensuse.org/systemd-sysext.8) to the system.
 
