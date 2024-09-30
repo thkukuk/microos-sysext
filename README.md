@@ -63,6 +63,7 @@ The following directories needs to be created:
 ## Directories
 * [sysupdate.d](sysupdate.d) - Example config files for systemd-sysupdate
 * [unpack](unpack) - Script which unpacks RPMs and builds sysext images from it
+* [overlay](overlay) - Script to create the sysext image from an overlay
 * [mkosi](mkosi) - Config files to build sysext images with `mkosi`
 
 ## Open Questions
