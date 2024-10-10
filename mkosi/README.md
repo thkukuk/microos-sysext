@@ -26,9 +26,9 @@ There is a project which builds sysext images for openSUSE MicroOS:
 * ~~How to disable the build of the default `image.raw` image? It's not needed.~~
 * ~~How to disable dm-verity? It may be overkill and increases the size too much.~~
 * ~~How to remove the RPM database from the sysext images? They don't make sense and will conflict each other, but require a huge amount of disk space.~~
-* mkiso: How to build sysext images with squashfs?
-* mkiso: How to create "useful" image names? E.g. `strace-<RPM Version>_<OBS Build Version>.<arch>.raw`
-* OBS: `mkiso.conf` files should not be published
+* mkosi: How to build sysext images with squashfs?
+* mkosi: How to create "useful" image names? E.g. `strace-<RPM Version>_<OBS Build Version>.<arch>.raw`
+* OBS: `mkosi.conf` files should not be published
 * OBS: How to create a SHA256SUMS file?
 * OBS: How to gpg sign that SHA256SUMS file?
 
