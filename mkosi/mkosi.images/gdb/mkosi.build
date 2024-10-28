@@ -1,0 +1,10 @@
+#!/bin/bash
+
+PACKAGE=gdb
+
+echo "mkosi.build (${PACKAGE})" "$@"
+
+if [ -n "${IMAGE_VERSION}" ]; then
+	mkdir -p "$DESTDIR"/usr/lib/extension-release.d
+	ln -sf extension-release.${PACKAGE}_"${IMAGE_VERSION}" "$DESTDIR"/usr/lib/extension-release.d/extension-release.${PACKAGE}
+fi

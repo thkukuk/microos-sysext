@@ -1,0 +1,16 @@
+#!/bin/bash
+
+PACKAGE=gdb
+
+echo "mkosi.postoutput ${PACKAGE}" "$@"
+
+if [ -n "${IMAGE_VERSION}" ]; then
+	rm "${OUTPUTDIR}/${PACKAGE}_${IMAGE_VERSION}"
+	mv "${OUTPUTDIR}/${PACKAGE}_${IMAGE_VERSION}.raw" "${OUTPUTDIR}/${PACKAGE}-${IMAGE_VERSION}.${ARCHITECTURE}.raw"
+	ln -sf "${PACKAGE}-${IMAGE_VERSION}.${ARCHITECTURE}.raw" "${OUTPUTDIR}/${PACKAGE}_${IMAGE_VERSION}.raw"
+else
+	rm "${OUTPUTDIR}/${PACKAGE}"
+	mv "${OUTPUTDIR}/${PACKAGE}.raw" "${OUTPUTDIR}/${PACKAGE}.${ARCHITECTURE}.raw"
+	ln -sf "${PACKAGE}.${ARCHITECTURE}.raw" "${OUTPUTDIR}/${PACKAGE}.raw"
+fi
+
