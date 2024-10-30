@@ -1,6 +1,6 @@
-# Building sysext images with mkosi for openSUSE MicroOS
+# Building sysext images for openSUSE MicroOS
 
-This repository contains the scripts and directories for `mkosi` to build sysext images to enhance openSUSE MicroOS. This images are raw disk images with a gpt partition table and erofs as filesystem.
+This repository contains the needed config files and scripts to build sysext images with `mkosi` to enhance openSUSE MicroOS. This images are raw disk images with a gpt partition table and erofs as filesystem.
 The dm-verity protection is disabled.
 
 ## Why systemd-sysext images?
@@ -62,9 +62,9 @@ The following directories needs to be created:
 * systemd-sysupdate.timer
 
 ## Directories
+* [mkosi.images](mkosi.images) - Config files to build sysext images with `mkosi`
 * [sysupdate.d](sysupdate.d) - Example config files for systemd-sysupdate
-* [old scripts](old-scripts) - Script which unpacks RPMs and builds sysext images from it
-* [mkosi.images](mkosi.images) - Config files for the sysext images for `mkosi`
+* [old scripts](old-scripts) - Old script which unpacks RPMs and builds sysext images from it
 
 ## Building sysext images with mkosi
 
