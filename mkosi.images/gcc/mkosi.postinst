@@ -1,0 +1,8 @@
+#!/bin/bash
+
+PACKAGE=gcc
+
+echo "mkosi.postinst ${PACKAGE}" "$@"
+
+# Overwrite update-alternative symlink
+ln -sf ld.bfd /buildroot/usr/bin/ld

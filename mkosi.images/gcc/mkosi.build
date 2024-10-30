@@ -1,0 +1,10 @@
+#!/bin/bash
+
+PACKAGE=gcc
+
+echo "mkosi.build (${PACKAGE})" "$@"
+
+if [ -n "${IMAGE_VERSION}" ]; then
+	mkdir -p "$DESTDIR"/usr/lib/extension-release.d
+	ln -sf "extension-release.${PACKAGE}-${IMAGE_VERSION}.${ARCHITECTURE}" "$DESTDIR"/usr/lib/extension-release.d/extension-release.${PACKAGE}
+fi

@@ -1,6 +1,6 @@
 # Script to create sysext images in squashfs format
 
-This directory creates a script `microos-sysext.sh` which creates sysext images in squashfs format by unpacking the RPMs.
+This directory contains a script `microos-sysext.sh` which creates sysext images in squashfs format by unpacking the RPMs.
 
 Workflow:
 * Download all RPMs for the MicroOS basesystem pattern
@@ -17,4 +17,5 @@ Workflow:
 ## Open Issues
 
 * Needs to run as root
-* Since the suggests of the base pattern are not used for the second directory, the solver can make different choices (e.g. libz1 vs. libz-ng-compat1).
+* Since the suggests of the base pattern are not used for the second directory, the solver can make different choices (e.g. libz1 vs. libz-ng-compat1). Use a solution with overlay for this
+* SELinux labels are missing
