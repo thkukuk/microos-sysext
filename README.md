@@ -16,13 +16,14 @@ The setup to use sysext images consists of two parts:
 ### Server
 A web server provides the sysext images in a directory. The format of the image name is `<name>-<build>.<arch>.raw`, where \<name\> is the official name of the image as used in `extension-release` meta data.
 
-A SHA256SUMS file contains the sha256 checksums and the name of each image. This file is used by `systemd-sysupdate` to check for new image versions.
+A SHA256SUMS file contains the sha256 checksums and the name of each image. This file is used by `systemd-sysupdate` to check for new image versions or by `importctl` to verify that the downloaded image is correct.
 
 The data can optional be signed with a gpg key.
 
 An example directory listing would look like:
 ```
 SHA256SUMS
+SHA256SUMS.gpg
 debug-4.2.x86-64.raw
 gcc-4.2.x86-64.raw
 strace-4.2.x86-64.raw
@@ -30,17 +31,14 @@ strace-4.2.x86-64.raw
 
 ### Client
 
-On the client, the image is stored in `/var/lib/sysext-store` and symlinked to `/etc/extensions`. The symlink must be the `<name>` plus the `.raw` suffix without version number.
+On the client, the image is stored in `/var/lib/extensions`.
 
 Example:
 ```
-/var/lib/sysext-store/debug-4.2.x86-64.raw
-/etc/extensions/debug.raw -> ../../var/lib/sysext-store/debug-4.2.x86-64.raw
+/var/lib/extensions/debug-4.2.x86-64.raw
 ```
 
 The `systemd-sysext.service` will automatically merge the images at bootup if enabled, else this has to be done manual with `systemd-sysext merge`.
-
-Installation and update of the images should happen with `systemd-sysupdate` according to the config files in `/etc/sysupdate.d`. This is work in progress.
 
 ## Client Prerequires
 
@@ -48,27 +46,25 @@ Installation and update of the images should happen with `systemd-sysupdate` acc
 
 The following packages needs to be installed:
 * systemd (`systemd-sysext`)
-* systemd-experimental (`systemd-sysupdate`)
+* systemd-experimental (`importctl`, `systemd-sysupdate`)
 * systemd-container (`systemd-pull`)
 
 ### Directories
 
 The following directories needs to be created:
-* `/var/lib/sysext-store`
-* `/etc/extensions`
+* `/var/lib/extensions`
 
 ### Enable services
 * systemd-sysext.service
-* systemd-sysupdate.timer
 
 ## Directories
 * [mkosi.images](mkosi.images) - Config files to build sysext images with `mkosi`
-* [sysupdate.d](sysupdate.d) - Example config files for systemd-sysupdate
+* [sysupdate.d](sysupdate.d) - Example config files for systemd-sysupdate, not working with systemd >= 257
 * [old scripts](old-scripts) - Old script which unpacks RPMs and builds sysext images from it
 
 ## Building sysext images with mkosi
 
-For this config `mkosi` >= 25~devel+20241009.7b138bc is required.
+For this config `mkosi` >= 25 is required.
 
 ### Command line
 
@@ -85,11 +81,6 @@ There is a project which builds sysext images for openSUSE MicroOS:
 
 * Project: https://build.opensuse.org/project/show/home:kukuk:sysext
 * Download: https://download.opensuse.org/repositories/home:/kukuk:/sysext/mkosi/
-
-#### Open Issues (OBS)
-* `mkosi.conf` files should not be published
-* How to create a SHA256SUMS file?
-* How to gpg sign that SHA256SUMS file?
 
 ## Open Questions
 * Call systemd-sysupdate refresh
