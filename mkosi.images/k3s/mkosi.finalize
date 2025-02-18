@@ -1,0 +1,8 @@
+#!/bin/bash
+
+PACKAGE=k3s
+
+echo "mkosi.finalize ${PACKAGE}" "$@"
+
+# Reload systemd to update information about k3s.service
+echo "EXTENSION_RELOAD_MANAGER=1" >> /buildroot/usr/lib/extension-release.d/extension-release.k3s-*

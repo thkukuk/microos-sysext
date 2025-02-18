@@ -1,0 +1,12 @@
+#!/bin/bash
+
+PACKAGE=k3s
+
+echo "mkosi.postoutput ${PACKAGE}" "$@"
+
+# Remove symlink without *.raw suffix
+if [ -n "${IMAGE_VERSION}" ]; then
+        rm ${OUTPUTDIR}/${PACKAGE}-*-${IMAGE_VERSION}.${ARCHITECTURE}
+else
+        rm ${OUTPUTDIR}/${PACKAGE}-*.${ARCHITECTURE}
+fi
