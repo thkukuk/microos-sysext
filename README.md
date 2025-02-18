@@ -92,5 +92,3 @@ There is a project which builds sysext images for openSUSE MicroOS:
     * Use SYSEXT\_LEVEL and make version depending glibc version?
       * Not enough if other libraries change
 * How to provide /etc/sysupdate.d/\<package\>.conf file?
-* How to sign and provide gpg pubkey?
-* How to handle SELinux labels?
