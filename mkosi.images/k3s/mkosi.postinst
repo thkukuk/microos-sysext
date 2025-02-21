@@ -1,0 +1,22 @@
+#!/bin/bash -x
+
+PACKAGE=k3s
+
+echo "mkosi.postinst ${PACKAGE}" "$@"
+
+# Use the korrect k3s binary
+case $(arch) in
+	x86_64)
+		mv /buildroot/usr/bin/k3s.amd64 /buildroot/usr/bin/k3s
+		;;
+	aarch64)
+		mv /buildroot/usr/bin/k3s.arm64 /buildroot/usr/bin/k3s
+		;;
+	*)
+		echo "Unknown architecture"
+		exit 1
+		;;
+esac
+
+# remove unused architecture files
+rm /buildroot/usr/bin/k3s.*
