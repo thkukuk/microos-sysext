@@ -59,7 +59,7 @@ The following directories needs to be created:
 
 ## Directories
 * [mkosi.images](mkosi.images) - Config files to build sysext images with `mkosi`
-* [sysupdate.d](sysupdate.d) - Example config files for systemd-sysupdate, not working with systemd >= 257
+* [sysupdate.d](sysupdate.d) - Example config files for systemd-sysupdate, requires systemd >= 257
 * [old scripts](old-scripts) - Old script which unpacks RPMs and builds sysext images from it
 
 ## Building sysext images with mkosi
