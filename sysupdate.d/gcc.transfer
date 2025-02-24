@@ -1,12 +1,12 @@
 [Transfer]
 Verify=false
+Features=gcc
 [Source]
 Type=url-file
-Path=https://download.example.com/store/
+Path=https://download.opensuse.org/repositories/home:/kukuk:/sysext/mkosi/
 MatchPattern=gcc-@v.%a.raw
 [Target]
 InstancesMax=3
 Type=regular-file
-Path=/var/lib/sysext-store
+Path=/var/lib/extensions
 MatchPattern=gcc-@v.%a.raw
-CurrentSymlink=/etc/extensions/gcc.raw

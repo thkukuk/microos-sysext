@@ -1,12 +1,12 @@
 [Transfer]
 Verify=false
+Features=strace
 [Source]
 Type=url-file
-Path=https://download.example.com/store/
+Path=https://download.opensuse.org/repositories/home:/kukuk:/sysext/mkosi/
 MatchPattern=strace-@v.%a.raw
 [Target]
 InstancesMax=3
 Type=regular-file
-Path=/var/lib/sysext-store
+Path=/var/lib/extensions
 MatchPattern=strace-@v.%a.raw
-CurrentSymlink=/etc/extensions/strace.raw

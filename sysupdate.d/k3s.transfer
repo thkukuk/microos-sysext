@@ -1,0 +1,12 @@
+[Transfer]
+Verify=false
+Features=k3s
+[Source]
+Type=url-file
+Path=https://download.opensuse.org/repositories/home:/kukuk:/sysext/mkosi/
+MatchPattern=k3s-1.31.5+k3s1-@v.%a.raw
+[Target]
+InstancesMax=3
+Type=regular-file
+Path=/var/lib/extensions
+MatchPattern=k3s-1.31.5+k3s1-@v.%a.raw
