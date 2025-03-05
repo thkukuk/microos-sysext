@@ -1,12 +1,12 @@
 [Transfer]
 Verify=false
-Features=gcc devel
+Features=git devel
 [Source]
 Type=url-file
 Path=https://download.opensuse.org/repositories/home:/kukuk:/sysext/mkosi/
-MatchPattern=gcc-@v.%a.raw
+MatchPattern=git-@v.%a.raw
 [Target]
 InstancesMax=3
 Type=regular-file
 Path=/var/lib/extensions
-MatchPattern=gcc-@v.%a.raw
+MatchPattern=git-@v.%a.raw
