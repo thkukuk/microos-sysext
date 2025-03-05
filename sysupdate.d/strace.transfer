@@ -1,6 +1,6 @@
 [Transfer]
 Verify=false
-Features=strace
+Features=strace debug
 [Source]
 Type=url-file
 Path=https://download.opensuse.org/repositories/home:/kukuk:/sysext/mkosi/
