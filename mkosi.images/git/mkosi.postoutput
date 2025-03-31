@@ -1,12 +1,10 @@
 #!/bin/bash
 
-PACKAGE=git
-
-echo "mkosi.postoutput ${PACKAGE}" "$@"
+echo "mkosi.postoutput ${SUBIMAGE}" "$@"
 
 if [ -n "${IMAGE_VERSION}" ]; then
-	rm "${OUTPUTDIR}/${PACKAGE}-${IMAGE_VERSION}.${ARCHITECTURE}"
+	rm "${OUTPUTDIR}/${SUBIMAGE}-${IMAGE_VERSION}.${ARCHITECTURE}"
 else
-	rm "${OUTPUTDIR}/${PACKAGE}.${ARCHITECTURE}"
+	rm "${OUTPUTDIR}/${SUBIMAGE}.${ARCHITECTURE}"
 fi
 

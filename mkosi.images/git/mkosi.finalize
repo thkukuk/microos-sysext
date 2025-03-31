@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "mkosi.finalize ${SUBIMAGE}" "$@"
+
+# Create json file with extenseion-release content
+IMAGE="${SUBIMAGE}-${IMAGE_VERSION}.${ARCHITECTURE}.raw"
+sysext-cli create-json -n "$IMAGE" -i /buildroot/usr/lib/extension-release.d/extension-release.${SUBIMAGE}-* -o "${OUTPUTDIR}/${IMAGE}.json"

@@ -1,8 +1,6 @@
 #!/bin/bash -x
 
-PACKAGE=k3s
-
-echo "mkosi.postinst ${PACKAGE}" "$@"
+echo "mkosi.postinst ${SUBIMAGE}" "$@"
 
 # Use the korrect k3s binary
 case $(arch) in

@@ -1,11 +1,14 @@
 #!/bin/bash
 
-PACKAGE=k3s
-
-echo "mkosi.finalize ${PACKAGE}" "$@"
+echo "mkosi.finalize ${SUBIMAGE}" "$@"
 
 # Since k3s is statically linked, run it on any distribution/version
 sed -i -e 's|^ID=.*|ID=_any|g' /buildroot/usr/lib/extension-release.d/extension-release.k3s-*
 
 # Reload systemd to update information about k3s.service
 echo "EXTENSION_RELOAD_MANAGER=1" >> /buildroot/usr/lib/extension-release.d/extension-release.k3s-*
+
+# Create json file with extenseion-release content
+IMAGE="${SUBIMAGE}-${IMAGE_VERSION}.${ARCHITECTURE}.raw"
+sysext-cli create-json -n "$IMAGE" -i /buildroot/usr/lib/extension-release.d/extension-release.${SUBIMAGE}-* -o "${OUTPUTDIR}/${IMAGE}.json"
+
