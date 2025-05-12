@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "mkosi.build ${SUBIMAGE}" "$@"
+
+mkdir -p "$DESTDIR"/usr/lib/extension-release.d
+ln -sf "extension-release.${SUBIMAGE}-${IMAGE_VERSION}.${ARCHITECTURE}" "$DESTDIR"/usr/lib/extension-release.d/extension-release."${SUBIMAGE}"
+
