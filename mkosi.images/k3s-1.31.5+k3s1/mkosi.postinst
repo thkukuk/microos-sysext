@@ -18,3 +18,12 @@ esac
 
 # remove unused architecture files
 rm /buildroot/usr/bin/k3s.*
+
+EXTENSION="${SUBIMAGE}-${IMAGE_VERSION}.${ARCHITECTURE}"
+mkdir -p /buildroot/usr/lib/extension-release.d/
+# Since k3s is statically linked, run it on any distribution/version
+echo "ID=_any" >> /buildroot/usr/lib/extension-release.d/extension-release.${EXTENSION}
+
+# Reload systemd to update information about k3s.service
+echo "EXTENSION_RELOAD_MANAGER=1" >> /buildroot/usr/lib/extension-release.d/extension-release.${EXTENSION}
+
